@@ -30,6 +30,7 @@
         {
             this.btnAccountManager = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnTransaction = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAccountManager
@@ -52,11 +53,22 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnTransaction
+            // 
+            this.btnTransaction.Location = new System.Drawing.Point(279, 12);
+            this.btnTransaction.Name = "btnTransaction";
+            this.btnTransaction.Size = new System.Drawing.Size(75, 23);
+            this.btnTransaction.TabIndex = 2;
+            this.btnTransaction.Text = "Transaction";
+            this.btnTransaction.UseVisualStyleBackColor = true;
+            this.btnTransaction.Click += new System.EventHandler(this.btnTransaction_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 313);
+            this.Controls.Add(this.btnTransaction);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAccountManager);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -73,5 +85,6 @@
 
         private System.Windows.Forms.Button btnAccountManager;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnTransaction;
     }
 }

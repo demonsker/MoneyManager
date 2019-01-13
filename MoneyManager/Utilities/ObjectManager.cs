@@ -25,12 +25,19 @@ namespace MoneyManager.Utilities
 
         public static object DeSerialize(string path)
         {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-            object obj = formatter.Deserialize(stream);
-            stream.Close();
+            try
+            {
+                IFormatter formatter = new BinaryFormatter();
+                Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                object obj = formatter.Deserialize(stream);
+                stream.Close();
 
-            return obj;
+                return obj;
+            }
+            catch
+            {
+                return null;
+            }      
         }
     }
 }

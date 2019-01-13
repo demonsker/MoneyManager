@@ -16,7 +16,7 @@ namespace MoneyManager.Forms
     {
         #region Private Fields
 
-        AccountManager _accountManager;
+        private AccountManager _accountManager;
 
         #endregion
 
@@ -27,21 +27,11 @@ namespace MoneyManager.Forms
 
             _accountManager = AccountManager.GetInstance();
 
-            ShowAllUsers();
+            dgvAllUsers.DataSource = _accountManager.UserDetail;
         }
         #endregion
 
         #region General Functions
-
-        private void ShowAllUsers()
-        {
-            dgvAllUsers.Rows.Clear();
-
-            foreach(User user in _accountManager.Users)
-            {
-                dgvAllUsers.Rows.Add(user.Id, user.Name);
-            }
-        }
 
         #endregion
 
@@ -49,8 +39,6 @@ namespace MoneyManager.Forms
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
             _accountManager.CreateUser(tbName.Text);
-
-            ShowAllUsers();
         }
         #endregion
     }

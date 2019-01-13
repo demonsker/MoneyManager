@@ -1,6 +1,7 @@
 ﻿using MoneyManager.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,10 @@ namespace MoneyManager.Utilities
         #region Private Fields
 
         private List<User> _lstUser;
+        private DataTable _userDetail;
         private static AccountManager _instance;
+
+        private int _maxIdLength = 5;
 
         #endregion
 
@@ -30,6 +34,21 @@ namespace MoneyManager.Utilities
             get => _lstUser.Count;
         }
 
+        public DataTable UserDetail
+        {
+            get
+            {
+                _userDetail.Rows.Clear();
+
+                foreach(User user in _lstUser)
+                {
+                    _userDetail.Rows.Add(user.Id, user.Name, user.Balance, user.CreateDate.ToString());
+                }
+
+                return _userDetail;
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -37,21 +56,22 @@ namespace MoneyManager.Utilities
         private AccountManager()
         {
             _lstUser = new List<User>();
+
+            _userDetail = new DataTable("Users");
+            _userDetail.Columns.Add("ID");
+            _userDetail.Columns.Add("ชื่อผู้ใช้");
+            _userDetail.Columns.Add("คงเหลือ");
+            _userDetail.Columns.Add("วันที่สร้าง");
+
         }
 
         #endregion
 
         #region Private Functions
 
-        private int GenerateId()
+        private string GenerateId()
         {
-            if(_lstUser.Count == 0)
-            {
-                return 0;
-            }
-
             int max = 0;
-
             foreach (User user in _lstUser)
             {
                 int id = Int32.Parse(user.Id);
@@ -62,7 +82,13 @@ namespace MoneyManager.Utilities
                 }
             }
 
-            return max + 1;
+            string strId = (max + 1).ToString();
+            for(int i = _maxIdLength - strId.Length; i > 0; i--)
+            {
+                strId = "0" + strId;
+            }
+
+            return strId;
         }
 
         #endregion
@@ -93,15 +119,15 @@ namespace MoneyManager.Utilities
 
         public void CreateUser(string name)
         {
-            int id = GenerateId();
+            User user = new User(GenerateId(), name);
 
-            User user = new User(id.ToString(), name);
-            _lstUser.Add(user);
+            AddUser(user);
         }
 
         public void AddUser(User user)
         {
             _lstUser.Add(user);
+            _userDetail.Rows.Add(user.Id, user.Name, user.Balance, user.CreateDate.ToString());
         }
 
         #endregion

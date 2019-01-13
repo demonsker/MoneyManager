@@ -1,0 +1,10 @@
+E:\VS Projects\MoneyManagerr\MoneyManagerr\bin\Debug\MoneyManager.exe.config
+E:\VS Projects\MoneyManagerr\MoneyManagerr\bin\Debug\MoneyManager.exe
+E:\VS Projects\MoneyManagerr\MoneyManagerr\bin\Debug\MoneyManager.pdb
+E:\VS Projects\MoneyManagerr\MoneyManagerr\obj\Debug\MoneyManager.Forms.frmAccountManager.resources
+E:\VS Projects\MoneyManagerr\MoneyManagerr\obj\Debug\MoneyManagerr.Forms.frmMain.resources
+E:\VS Projects\MoneyManagerr\MoneyManagerr\obj\Debug\MoneyManager.Properties.Resources.resources
+E:\VS Projects\MoneyManagerr\MoneyManagerr\obj\Debug\MoneyManagerr.csproj.GenerateResource.cache
+E:\VS Projects\MoneyManagerr\MoneyManagerr\obj\Debug\MoneyManagerr.csproj.CoreCompileInputs.cache
+E:\VS Projects\MoneyManagerr\MoneyManagerr\obj\Debug\MoneyManager.exe
+E:\VS Projects\MoneyManagerr\MoneyManagerr\obj\Debug\MoneyManager.pdb
