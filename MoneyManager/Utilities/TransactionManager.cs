@@ -110,6 +110,17 @@ namespace MoneyManager.Utilities
                  sender: source.Name);
         }
 
+        public void Pay(User user, double amount, string mark)
+        {
+            user.Balance -= amount;
+
+            AddToTransaction(name: user.Name,
+                             operation: "ชำระเงิน",
+                             amount: amount.ToString(),
+                             balance: user.Balance.ToString(),
+                             mark: mark);
+        }
+
         #endregion
 
     }

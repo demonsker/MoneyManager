@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace MoneyManager.Forms
 {
-    public partial class frmDeposit : Form
+    public partial class frmPayment : Form
     {
         #region Private Fields
         private AccountManager _accountManager;
@@ -21,7 +21,7 @@ namespace MoneyManager.Forms
 
         #region Constructor & Form_Load
 
-        public frmDeposit()
+        public frmPayment()
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace MoneyManager.Forms
             _transaction = TransactionManager.GetInstance();
         }
 
-        private void frmDeposit_Load(object sender, EventArgs e)
+        private void frmPayment_Load(object sender, EventArgs e)
         {
             if (_accountManager.Count == 0)
             {
@@ -48,6 +48,7 @@ namespace MoneyManager.Forms
             cboAllUsers.ValueMember = "Key";
         }
 
+
         #endregion
 
         #region Event Functions
@@ -57,12 +58,12 @@ namespace MoneyManager.Forms
 
             if (user == null)
             {
-                MessageBox.Show("การฝากเงินล้มเหลว กรุณาเลือกผู้ใช้ก่อน", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("การชำระเงินล้มเหลว กรุณาเลือกผู้ใช้ก่อน", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            _transaction.Deposit(user, Int32.Parse(tbValue.Text));
-            MessageBox.Show("ฝากเงินสำเร็จ", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _transaction.Pay(user, Int32.Parse(tbValue.Text), tbMark.Text);
+            MessageBox.Show("ชำระเงินสำเร็จ", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
     }

@@ -15,6 +15,7 @@ namespace MoneyManager.Forms
     public partial class frmTransaction : Form
     {
         #region Private Fields
+        private AccountManager _accountManager;
         private TransactionManager _transaction;
         #endregion
 
@@ -23,13 +24,28 @@ namespace MoneyManager.Forms
         {
             InitializeComponent();
 
+            _accountManager = AccountManager.GetInstance();
             _transaction = TransactionManager.GetInstance();
+
             dgvAllTransaction.DataSource = _transaction.Transactions;
             dgvAllTransaction.Columns["การดำเนินการ"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
 
         private void frmTransaction_Load(object sender, EventArgs e)
         {
+            if (_accountManager.Count == 0)
+            {
+                return;
+            }
+
+            cboAllUsers.Items.Add("ทั้งหมด");
+
+            foreach (User user in _accountManager.Users)
+            {
+                cboAllUsers.Items.Add(user.Name);
+            }
+
+            cboAllUsers.SelectedIndex = 0;
         }
         #endregion
 
@@ -48,6 +64,24 @@ namespace MoneyManager.Forms
         {
             frmTransfer pFrmTransfer = new frmTransfer();
             pFrmTransfer.ShowDialog();
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            frmPayment pFrmPayment = new frmPayment();
+            pFrmPayment.ShowDialog();
+        }
+
+        private void cboAllUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboAllUsers.SelectedIndex == 0)
+            {
+                (dgvAllTransaction.DataSource as DataTable).DefaultView.RowFilter = null;
+            }
+            else
+            {
+                (dgvAllTransaction.DataSource as DataTable).DefaultView.RowFilter = string.Format("ชื่อ = '{0}'", cboAllUsers.Text);
+            }
         }
         #endregion
     }

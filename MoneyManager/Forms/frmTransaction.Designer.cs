@@ -31,6 +31,9 @@
             this.dgvAllTransaction = new System.Windows.Forms.DataGridView();
             this.btnDeposit = new System.Windows.Forms.Button();
             this.btnTransfer = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboAllUsers = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTransaction)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +43,7 @@
             this.dgvAllTransaction.AllowUserToDeleteRows = false;
             this.dgvAllTransaction.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAllTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAllTransaction.Location = new System.Drawing.Point(12, 85);
+            this.dgvAllTransaction.Location = new System.Drawing.Point(12, 118);
             this.dgvAllTransaction.Name = "dgvAllTransaction";
             this.dgvAllTransaction.ReadOnly = true;
             this.dgvAllTransaction.RowHeadersVisible = false;
@@ -68,11 +71,43 @@
             this.btnTransfer.UseVisualStyleBackColor = true;
             this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
             // 
+            // btnPayment
+            // 
+            this.btnPayment.Location = new System.Drawing.Point(199, 12);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(75, 23);
+            this.btnPayment.TabIndex = 6;
+            this.btnPayment.Text = "จ่ายเงิน";
+            this.btnPayment.UseVisualStyleBackColor = true;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "กรองผู้ใช้ : ";
+            // 
+            // cboAllUsers
+            // 
+            this.cboAllUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAllUsers.FormattingEnabled = true;
+            this.cboAllUsers.Location = new System.Drawing.Point(79, 81);
+            this.cboAllUsers.Name = "cboAllUsers";
+            this.cboAllUsers.Size = new System.Drawing.Size(121, 21);
+            this.cboAllUsers.TabIndex = 8;
+            this.cboAllUsers.SelectedIndexChanged += new System.EventHandler(this.cboAllUsers_SelectedIndexChanged);
+            // 
             // frmTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 361);
+            this.ClientSize = new System.Drawing.Size(775, 394);
+            this.Controls.Add(this.cboAllUsers);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.btnTransfer);
             this.Controls.Add(this.btnDeposit);
             this.Controls.Add(this.dgvAllTransaction);
@@ -84,6 +119,7 @@
             this.Load += new System.EventHandler(this.frmTransaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTransaction)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -91,5 +127,8 @@
         private System.Windows.Forms.DataGridView dgvAllTransaction;
         private System.Windows.Forms.Button btnDeposit;
         private System.Windows.Forms.Button btnTransfer;
+        private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboAllUsers;
     }
 }

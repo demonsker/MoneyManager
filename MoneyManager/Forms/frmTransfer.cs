@@ -31,6 +31,11 @@ namespace MoneyManager.Forms
 
         private void frmTransfer_Load(object sender, EventArgs e)
         {
+            if (_accountManager.Count == 0)
+            {
+                return;
+            }
+
             Dictionary<User, string> items = new Dictionary<User, string>();
 
             foreach (User user in _accountManager.Users)
@@ -52,8 +57,17 @@ namespace MoneyManager.Forms
         #region Event Functions
         private void btnOK_Click(object sender, EventArgs e)
         {
-            _transaction.Transfer(cboSender.SelectedValue as User,
-                                  cboReceiver.SelectedValue as User,
+            User senderUser = cboSender.SelectedValue as User;
+            User receiverUser = cboReceiver.SelectedValue as User;
+
+            if(senderUser == null || receiverUser == null)
+            {
+                MessageBox.Show("การโอนเงินล้มเหลว กรุณาเลือกผู้ใช้ก่อน", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _transaction.Transfer(senderUser,
+                                  receiverUser,
                                   Int32.Parse(tbValue.Text));
 
             MessageBox.Show("โอนเงินสำเร็จ", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
