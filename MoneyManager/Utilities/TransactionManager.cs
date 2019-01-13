@@ -89,6 +89,22 @@ namespace MoneyManager.Utilities
                              amount : amount.ToString());
         }
 
+        public void Transfer(User source, User target, double amount)
+        {
+            source.Balance -= amount;
+            target.Balance += amount;
+
+            AddToTransaction(name: source.Name,
+                             operation: "โอนเงิน",
+                             amount: amount.ToString(),
+                             receiver: target.Name);
+
+            AddToTransaction(name: target.Name,
+                 operation: "รับโอน",
+                 amount: amount.ToString(),
+                 sender: source.Name);
+        }
+
         #endregion
 
     }

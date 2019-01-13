@@ -15,7 +15,6 @@ namespace MoneyManager.Forms
     public partial class frmTransaction : Form
     {
         #region Private Fields
-        private AccountManager _accountManager;
         private TransactionManager _transaction;
         #endregion
 
@@ -24,27 +23,12 @@ namespace MoneyManager.Forms
         {
             InitializeComponent();
 
-            _accountManager = AccountManager.GetInstance();
             _transaction = TransactionManager.GetInstance();
-
-            cboAllUsers.DisplayMember = "Text";
-            cboAllUsers.ValueMember = "Value";
-
             dgvAllTransaction.DataSource = _transaction.Transactions;
         }
 
         private void frmTransaction_Load(object sender, EventArgs e)
         {
-            Dictionary<User, string> items = new Dictionary<User, string>();
-
-            foreach (User user in _accountManager.Users)
-            {
-                items.Add(user, user.Name);
-            }
-
-            cboAllUsers.DataSource = new BindingSource(items, null);
-            cboAllUsers.DisplayMember = "Value";
-            cboAllUsers.ValueMember = "Key";
         }
         #endregion
 
@@ -53,10 +37,12 @@ namespace MoneyManager.Forms
         #endregion
 
         #region Event Functions
-        private void btnOK_Click(object sender, EventArgs e)
+        private void btnDeposit_Click(object sender, EventArgs e)
         {
-            _transaction.Deposit(cboAllUsers.SelectedValue as User, Int32.Parse(tbValue.Text));
+            frmDeposit pFrmDeposit = new frmDeposit();
+            pFrmDeposit.ShowDialog();
         }
         #endregion
+
     }
 }

@@ -28,38 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cboAllUsers = new System.Windows.Forms.ComboBox();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.tbValue = new System.Windows.Forms.TextBox();
             this.dgvAllTransaction = new System.Windows.Forms.DataGridView();
+            this.btnDeposit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTransaction)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cboAllUsers
-            // 
-            this.cboAllUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAllUsers.FormattingEnabled = true;
-            this.cboAllUsers.Location = new System.Drawing.Point(12, 12);
-            this.cboAllUsers.Name = "cboAllUsers";
-            this.cboAllUsers.Size = new System.Drawing.Size(121, 21);
-            this.cboAllUsers.TabIndex = 0;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(266, 10);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 1;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // tbValue
-            // 
-            this.tbValue.Location = new System.Drawing.Point(150, 13);
-            this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(100, 20);
-            this.tbValue.TabIndex = 2;
             // 
             // dgvAllTransaction
             // 
@@ -75,29 +47,36 @@
             this.dgvAllTransaction.Size = new System.Drawing.Size(633, 264);
             this.dgvAllTransaction.TabIndex = 3;
             // 
+            // btnDeposit
+            // 
+            this.btnDeposit.Location = new System.Drawing.Point(12, 12);
+            this.btnDeposit.Name = "btnDeposit";
+            this.btnDeposit.Size = new System.Drawing.Size(75, 23);
+            this.btnDeposit.TabIndex = 4;
+            this.btnDeposit.Text = "ฝากเงิน";
+            this.btnDeposit.UseVisualStyleBackColor = true;
+            this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
+            // 
             // frmTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 361);
+            this.Controls.Add(this.btnDeposit);
             this.Controls.Add(this.dgvAllTransaction);
-            this.Controls.Add(this.tbValue);
-            this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.cboAllUsers);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmTransaction";
             this.Text = "Transaction";
             this.Load += new System.EventHandler(this.frmTransaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTransaction)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cboAllUsers;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.TextBox tbValue;
         private System.Windows.Forms.DataGridView dgvAllTransaction;
+        private System.Windows.Forms.Button btnDeposit;
     }
 }

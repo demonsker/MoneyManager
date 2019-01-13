@@ -65,7 +65,7 @@ namespace MoneyManagerr.Forms
             {
                 ObjectManager.Serialize(_path + _accountManager_FileName, _accountManager);
                 ObjectManager.Serialize(_path + _transactionManager_FileName, _transactionManager);
-                MessageBox.Show("Save Completed");
+                MessageBox.Show("บันทึกสำเร็จ", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
