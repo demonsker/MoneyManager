@@ -1,6 +1,6 @@
 ﻿namespace MoneyManagerr.Forms
 {
-    partial class Main
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 243);
+            this.ClientSize = new System.Drawing.Size(485, 313);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

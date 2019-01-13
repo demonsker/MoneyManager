@@ -9,6 +9,7 @@ namespace MoneyManagerr.Models
     class User
     {
         private string name;
+        private string id;
 
         public string Name
         {
@@ -20,6 +21,16 @@ namespace MoneyManagerr.Models
             {
                 return name;
             }         
+        }
+
+        public string Id {
+            get => id;
+            set => id = value;
+        }
+
+        public User(string name)
+        {
+            this.name = name;
         }
     }
 }
