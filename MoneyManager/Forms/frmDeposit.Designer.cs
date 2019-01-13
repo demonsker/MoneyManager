@@ -93,7 +93,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDeposit";
-            this.Text = "frmDeposit";
+            this.Text = "ฝากเงิน";
             this.Load += new System.EventHandler(this.frmDeposit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

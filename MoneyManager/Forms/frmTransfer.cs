@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace MoneyManager.Forms
 {
-    public partial class frmDeposit : Form
+    public partial class frmTransfer : Form
     {
         #region Private Fields
         private AccountManager _accountManager;
@@ -21,7 +21,7 @@ namespace MoneyManager.Forms
 
         #region Constructor & Form_Load
 
-        public frmDeposit()
+        public frmTransfer()
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace MoneyManager.Forms
             _transaction = TransactionManager.GetInstance();
         }
 
-        private void frmDeposit_Load(object sender, EventArgs e)
+        private void frmTransfer_Load(object sender, EventArgs e)
         {
             Dictionary<User, string> items = new Dictionary<User, string>();
 
@@ -38,9 +38,13 @@ namespace MoneyManager.Forms
                 items.Add(user, user.Name);
             }
 
-            cboAllUsers.DataSource = new BindingSource(items, null);
-            cboAllUsers.DisplayMember = "Value";
-            cboAllUsers.ValueMember = "Key";
+            cboSender.DataSource = new BindingSource(items, null);
+            cboReceiver.DataSource = new BindingSource(items, null);
+
+            cboSender.DisplayMember = "Value";
+            cboSender.ValueMember = "Key";
+            cboReceiver.DisplayMember = "Value";
+            cboReceiver.ValueMember = "Key";
         }
 
         #endregion
@@ -48,8 +52,11 @@ namespace MoneyManager.Forms
         #region Event Functions
         private void btnOK_Click(object sender, EventArgs e)
         {
-            _transaction.Deposit(cboAllUsers.SelectedValue as User, Int32.Parse(tbValue.Text));
-            MessageBox.Show("ฝากเงินสำเร็จ", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _transaction.Transfer(cboSender.SelectedValue as User,
+                                  cboReceiver.SelectedValue as User,
+                                  Int32.Parse(tbValue.Text));
+
+            MessageBox.Show("โอนเงินสำเร็จ", "Money Manager", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
     }

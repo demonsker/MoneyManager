@@ -34,6 +34,7 @@ namespace MoneyManager.Utilities
             _transactionTable.Columns.Add("ชื่อ");
             _transactionTable.Columns.Add("การดำเนินการ");
             _transactionTable.Columns.Add("จำนวน");
+            _transactionTable.Columns.Add("คงเหลือ");
             _transactionTable.Columns.Add("ชื่อผู้รับ");
             _transactionTable.Columns.Add("ชื่อผู้โอน");
             _transactionTable.Columns.Add("หมายเหตุ");
@@ -43,12 +44,13 @@ namespace MoneyManager.Utilities
         #region Private Functions
 
         private void AddToTransaction(string name = "", string operation = "", string amount = "", 
-                                      string receiver = "", string sender = "", string mark = "")
+                                      string balance = "", string receiver = "", string sender = "", string mark = "")
         {
             _transactionTable.Rows.Add(DateTime.Now,
                                        name,
                                        operation,
                                        amount,
+                                       balance,
                                        receiver,
                                        sender,
                                        mark);
@@ -86,7 +88,8 @@ namespace MoneyManager.Utilities
 
             AddToTransaction(name : user.Name, 
                              operation : "ฝากเงิน", 
-                             amount : amount.ToString());
+                             amount : amount.ToString(),
+                             balance: user.Balance.ToString());
         }
 
         public void Transfer(User source, User target, double amount)
@@ -97,11 +100,13 @@ namespace MoneyManager.Utilities
             AddToTransaction(name: source.Name,
                              operation: "โอนเงิน",
                              amount: amount.ToString(),
+                             balance: source.Balance.ToString(),
                              receiver: target.Name);
 
             AddToTransaction(name: target.Name,
                  operation: "รับโอน",
                  amount: amount.ToString(),
+                 balance: target.Balance.ToString(),
                  sender: source.Name);
         }
 

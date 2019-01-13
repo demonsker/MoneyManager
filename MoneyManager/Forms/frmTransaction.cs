@@ -25,6 +25,7 @@ namespace MoneyManager.Forms
 
             _transaction = TransactionManager.GetInstance();
             dgvAllTransaction.DataSource = _transaction.Transactions;
+            dgvAllTransaction.Columns["การดำเนินการ"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
 
         private void frmTransaction_Load(object sender, EventArgs e)
@@ -42,7 +43,12 @@ namespace MoneyManager.Forms
             frmDeposit pFrmDeposit = new frmDeposit();
             pFrmDeposit.ShowDialog();
         }
-        #endregion
 
+        private void btnTransfer_Click(object sender, EventArgs e)
+        {
+            frmTransfer pFrmTransfer = new frmTransfer();
+            pFrmTransfer.ShowDialog();
+        }
+        #endregion
     }
 }

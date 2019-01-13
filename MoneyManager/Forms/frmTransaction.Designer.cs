@@ -30,6 +30,7 @@
         {
             this.dgvAllTransaction = new System.Windows.Forms.DataGridView();
             this.btnDeposit = new System.Windows.Forms.Button();
+            this.btnTransfer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTransaction)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@
             this.dgvAllTransaction.ReadOnly = true;
             this.dgvAllTransaction.RowHeadersVisible = false;
             this.dgvAllTransaction.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllTransaction.Size = new System.Drawing.Size(633, 264);
+            this.dgvAllTransaction.Size = new System.Drawing.Size(751, 264);
             this.dgvAllTransaction.TabIndex = 3;
             // 
             // btnDeposit
@@ -57,11 +58,22 @@
             this.btnDeposit.UseVisualStyleBackColor = true;
             this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
             // 
+            // btnTransfer
+            // 
+            this.btnTransfer.Location = new System.Drawing.Point(104, 12);
+            this.btnTransfer.Name = "btnTransfer";
+            this.btnTransfer.Size = new System.Drawing.Size(75, 23);
+            this.btnTransfer.TabIndex = 5;
+            this.btnTransfer.Text = "โอนเงิน";
+            this.btnTransfer.UseVisualStyleBackColor = true;
+            this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
+            // 
             // frmTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 361);
+            this.ClientSize = new System.Drawing.Size(775, 361);
+            this.Controls.Add(this.btnTransfer);
             this.Controls.Add(this.btnDeposit);
             this.Controls.Add(this.dgvAllTransaction);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -78,5 +90,6 @@
         #endregion
         private System.Windows.Forms.DataGridView dgvAllTransaction;
         private System.Windows.Forms.Button btnDeposit;
+        private System.Windows.Forms.Button btnTransfer;
     }
 }
