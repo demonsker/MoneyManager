@@ -1,4 +1,4 @@
-﻿namespace MoneyManagerr.Forms
+﻿namespace MoneyManager.Forms
 {
     partial class frmAccountManager
     {

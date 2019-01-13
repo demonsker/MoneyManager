@@ -1,4 +1,5 @@
-﻿using MoneyManagerr.Models;
+﻿using MoneyManager.Models;
+using MoneyManager.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,14 +10,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MoneyManagerr.Forms
+namespace MoneyManager.Forms
 {
     public partial class frmAccountManager : Form
     {
+        #region Private Fields
+
+        AccountManager _accountManager;
+
+        #endregion
+
         #region Constructor
         public frmAccountManager()
         {
             InitializeComponent();
+
+            _accountManager = AccountManager.GetInstance();
+
+            ShowAllUsers();
         }
         #endregion
 
@@ -24,7 +35,12 @@ namespace MoneyManagerr.Forms
 
         private void ShowAllUsers()
         {
+            dgvAllUsers.Rows.Clear();
 
+            foreach(User user in _accountManager.Users)
+            {
+                dgvAllUsers.Rows.Add(user.Id, user.Name);
+            }
         }
 
         #endregion
@@ -32,7 +48,9 @@ namespace MoneyManagerr.Forms
         #region Event Functions
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
-            User user = new User(tbName.Text);
+            _accountManager.CreateUser(tbName.Text);
+
+            ShowAllUsers();
         }
         #endregion
     }

@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoneyManagerr.Models
+namespace MoneyManager.Models
 {
+    [Serializable]
     class User
     {
         private string name;
@@ -28,9 +29,10 @@ namespace MoneyManagerr.Models
             set => id = value;
         }
 
-        public User(string name)
+        public User(string id, string name)
         {
             this.name = name;
+            this.id = id;
         }
     }
 }
